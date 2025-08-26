@@ -18,4 +18,23 @@ public class ProductCatalog {
     public Product getProduct(String name) {
         return products.get(name);
     }
+
+    public boolean hasEnoughStock(String name, int qty) {
+        Product p = products.get(name);
+        if (p == null) return false;
+        return p.getStock() >= qty;
+    }
+
+    public void deductStock(String name, int qty) {
+        Product p = products.get(name);
+        if (p == null) {
+            throw new IllegalArgumentException("No such product: " + name);
+        }
+        if (p.getStock() < qty) {
+            throw new OutOfStockException(name, qty, p.getStock());
+        }
+        p.setStock(p.getStock() - qty);
+    }
+
 }
+

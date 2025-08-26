@@ -10,7 +10,6 @@ public class Product {
         this.price = price;
         this.stock = stock;
     }
-
     public void cutStock(int quantity) {
         stock -= quantity;
     }
@@ -29,5 +28,8 @@ public class Product {
     }
     public void setPrice(double price) {
         this.price = price;
+    }
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
